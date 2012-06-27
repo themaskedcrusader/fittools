@@ -1,0 +1,42 @@
+Store: Allows you to store text and values from the current web page in FitTools own Global Variable. The values will be stored for the duration of the test, or suite, and therefore can be accessed by any tests or fixtures included with FitTools:
+
+  storeTextPresent = If the text in target is present, the global variable in value will store true
+  storeTitle       = stores the page title in a global variable
+  storeValue       = Stores the value of specified HTML Element (target) in global variable (value)
+  storeText        = Stores the text in a specified location (DOM, or XPath) in global variable (value)
+  storeTable       = Stores the contents of specified table element in global variable
+  storeElementPresent = if a specified element is present on the page, the global variable will store true
+  
+FIT Tools, Assert and Verify both function the same way. In selenium, an assert will abort the entire test, but in FitTools, the assert only fails the test row, the test will continue. The return value in FitTools for an assert or fail is a boolean (true for pass, false for fail). These passes and failures will show up as such in FitNesse. 
+
+ -TextPresent    = Verifies the specified text is somewhere on the page (with target)
+ -Title          = compares the title of the page with an expected value (with target)
+ -Value          = compares the value of an HTML Element (target) with an expected value (value)
+ -Text           = compares the text in a locator (Target: DOM or Xpath) with an expected value (value)
+ -Table          = compares the location in a table (target: see below) with an expected value (value)
+ -ElementPresent = Verifes that an expected HTML element is present on the page (with target)
+
+Table locations are referenced by three part number (ie. 1.2.3) where the elements are respectively (Table Number on page , Row , column). The first element may be the text "name" attribute of the table, ie. foo.1.2 would compare the second cell on the first row of table with attribute "name=foo".
+
+EVAL
+
+FitTools accepts Selenium Javascript snippits. you can use snippits with any of the following commands:
+
+  storeEval
+  assertEval
+  verifyEval
+  waitForEval
+  
+The target for each target processes the js snippit before firing the command.
+
+AssertAlert, VerifyAlert
+
+verifies an alert pops up, click the OK button after verifying
+
+confirmations
+
+implement 
+  chooseOkOnNextConfirmation
+  chooseCancelOnNextConfirmation
+  
+assert confirmation.
